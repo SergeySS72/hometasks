@@ -28,6 +28,30 @@
 
 *Приведите скриншот, на котором видно, что спустя 5 секунд ключи удалились из базы.*
 
+- **Скрипт для выполнения задания на Python 3**
+```
+from pymemcache.client import base
+import time
+
+db = base.Client(('localhost', 11211))
+
+db.set('kl1', '100', 5)
+db.set('kl2', '200', 5)
+db.set('kl3', '300', 5)
+
+print("kl1 - ", db.get('kl1'))
+print("kl2 - ", db.get('kl2'))
+print("kl3 - ", db.get('kl3'))
+
+print("   Ожидание 5 секунд...")
+time.sleep(5)
+
+print("kl1 - ", db.get('kl1'))
+print("kl2 - ", db.get('kl2'))
+print("kl3 - ", db.get('kl3'))
+```
+  ![image](https://github.com/SergeySS72/hometasks/assets/134854727/83a175cf-dc10-492e-9725-e00eaf1693ca)
+
 ---
 
 ### Задание 4. Запись данных в Redis
